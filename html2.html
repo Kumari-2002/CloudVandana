@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <title>Survey Form</title>
+  <style>
+	 body {
+      font-family: Arial, sans-serif;
+	  background-color:#87CEEB;
+    }
+    .container {
+	  background-color:#FAF9F6;
+	  float:center;
+      width: 30%;
+      margin: 0 auto;
+	  
+    }
+  </style>
+ </head>
+ <body>
+		<div class="container">
+		<h1>&nbsp;&nbsp;Survey Form</h1>
+		<form id="form">
+		<label for="firstName">&nbsp;&nbsp;First Name:<span style="color:red;">*</span></label>
+		<input type="text" id="firstName" name="firstName" required><br><br>
+		<label for="lastName">&nbsp;&nbsp;Last Name:<span style="color:red;">*</span></label>
+		<input type="text" id="lastName" required><br><br>
+		<label for="dob">&nbsp;&nbsp;Date Of Birth:<span style="color:red;">*</span></label>
+		<input type="date" id="dob" required><br><br>
+		<label for="country">&nbsp;&nbsp;Country:<span style="color:red;">*</span></label>
+		<select id="country" required>
+		<option value="select">Select</option>
+		<option value="America">America</option>
+		<option value="Bangladesh">Bangladesh</option>
+		<option value="Canada">Canada</option>
+		<option value="Denmark">Denmark</option>
+		<option value="England">England</option>
+		<option value="France">France</option>
+		<option value="Germany">Germany</option>
+		<option value="Hungary">Hungary</option>
+		<option value="India">India</option>
+		<option value="Japan">Japan</option>
+		<option value="Mexico">Mexico</option>
+		<option value="Nepal">Nepal</option>
+		<option value="Pakistan">Pakistan</option>
+		<option value="Qatar">Qatar</option>
+		<option value="Southafrica">South Africa</option>
+		<option value="Turkey">Turkey</option>
+		<option value="Uk">UK</option>
+		<option value="vietnam">Vietnam</option>
+		<option value="Zimbabwe">Zimbabwe</option>
+		</select><br><br>
+		<label for="Gender">&nbsp;&nbsp;Gender:<span style="color:red;">*</span></label>
+		<input type="checkbox" id="male"name="gender" value="Male"><label for="male">Male</label>&nbsp;&nbsp;
+		<input type="checkbox" id="female"name="gender" value="Female"><label for="female">Female</label><br><br>
+		<label for="profession">&nbsp;&nbsp;Profession:<span style="color:red;">*</span></label>
+		<input type="text" id="profession" required><br><br>
+		<label for="email">&nbsp;&nbsp;Email:<span style="color:red;">*</span></label>
+		<input type="email" id="email" required><br><br>
+		<label for="mobile">&nbsp;&nbsp;Mobile Number:<span style="color:red;">*</span></label>
+		<input type="tel" id="mobile" required><br><br>
+		<label for="submit"></label>
+		&nbsp;&nbsp;<button type="button" onclick="submitForm()">Submit</button>&nbsp;&nbsp;&nbsp;
+		<button type="button" onclick="resetForm()">Reset</button><br><br>
+		</form>
+		<div id="popup" class="popup">
+				 <!-- The selected values with labels will be displayed here -->
+		</div>
+		<script>
+				function submitForm()
+				{
+					const firstName=document.getElementById("firstName").value;
+					const lastName=document.getElementById("lastName").value;
+					const dob=document.getElementById("dob").value;
+					const country=document.getElementById("country").value;
+					const gender = [...document.getElementsByName("gender")].filter(checkbox => checkbox.checked).map(checkbox => checkbox.value);
+					const profession=document.getElementById("profession").value;
+					const email=document.getElementById("email").value;
+					const mobile=document.getElementById("mobile").value;
+
+					const popupContent = `
+											<p><strong>First Name:</strong> ${firstName}</p>
+											<p><strong>Last Name:</strong>  ${lastName}</p>
+											<p><strong>Date Of Birth:</strong> ${dob}</p>
+											<p><strong>Country:</strong> ${country}</p>
+											<p><strong>gender:</strong> ${gender.join(", ")}</p>
+											<p><strong>profession:</strong> ${profession}</p>
+											<p><strong>email:</strong> ${email}</p>
+											<p><strong>Mobile Number:</strong> ${mobile}</p>
+					`;
+					document.getElementById("popup").innerHTML=popupContent;
+					document.getElementById("popup").style.display="block";
+				}
+				function resetForm()
+				{
+					document.getElementById("form").reset();
+					document.getElementById("popup").style.display="none";
+				}
+		</script>
+
+
+
+
+
+ </body>
+</html>
